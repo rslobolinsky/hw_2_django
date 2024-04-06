@@ -1,22 +1,27 @@
 import json
+# from pathlib import Path
 
 from django.core.management import BaseCommand
 
 from catalog.models import Product, Category
 
 
+# path = Path(__file__).resove().parent.absolute() / 'data.json'
+
 class Command(BaseCommand):
 
     @staticmethod
     def json_read_categories():
         with open('data.json', encoding='utf-8') as file:
-            data = json.load(file)
+            data = json.load(file)['property']
+            #print(data)
         return [item for item in data if item['model'] == 'catalog.category']
 
     @staticmethod
     def json_read_products():
         with open('data.json', encoding='utf-8') as file:
-            data = json.load(file)
+            data = json.load(file)['property']
+            #print()
         return [item for item in data if item['model'] == 'catalog.product']
 
     def handle(self, *args, **options):
