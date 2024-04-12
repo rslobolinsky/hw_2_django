@@ -9,9 +9,18 @@ def home(request):
     category_list = Category.objects.all()
     context = {
         'object_list': category_list,
+        'title_1': 'Фрукты - Овощи Магаз',
+        'title_2': 'Фрукты - Овощи Магаз - это отличный вариант покупки фруктов и овощей онлайн'
     }
     return render(request, 'catalog/home.html', context)
 
+def category_list(request):
+    categories = Category.objects.all()
+    context = {
+        'object_list': categories,
+        'title_1': 'Категории',
+        'title_2': 'Все категории товаров'
+    }
 
 def contacts(request):
     if request.method == 'POST':
