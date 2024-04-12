@@ -25,8 +25,8 @@ def category_list(request):
     return render(request, 'catalog/category.html', context)
 
 
-def category_product(request, id):
-    category_item = Category.objects.get(id=id)
+def category_product(request, pk):
+    category_item = Category.objects.get(pk=pk)
     products = Product.objects.filter(category_name=category_item.name)
     context = {
         'object_list': products,
@@ -36,8 +36,8 @@ def category_product(request, id):
     return render(request, 'catalog/products.html', context)
 
 
-def product(request, id):
-    prod = Product.objects.get(id=id)
+def product(request, pk):
+    prod = Product.objects.get(pk=pk)
     context = {
         'object_list': prod,
         'title_1': f'{prod.name}',
