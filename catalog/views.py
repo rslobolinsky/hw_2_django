@@ -27,7 +27,7 @@ def category_list(request):
 
 def category_product(request, pk):
     category_item = Category.objects.get(pk=pk)
-    products = Product.objects.filter(category_name=category_item.name)
+    products = Product.objects.filter(pk=pk)
     context = {
         'object_list': products,
         'title_1': f'Категория {category_item}',
