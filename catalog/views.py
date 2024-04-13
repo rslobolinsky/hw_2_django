@@ -33,13 +33,13 @@ def category_product(request, pk):
         'title_1': f'Категория {category_item}',
         'title_2': f'{category_item.description}',
     }
-    return render(request, 'catalog/products.html', context)
+    return render(request, 'catalog/product.html', context)
 
 
 def product(request, pk):
     prod = Product.objects.get(pk=pk)
     context = {
-        'object_list': prod,
+        'object': prod,
         'title_1': f'{prod.name}',
         'title_2': f'Категория {prod.category}',
     }
